@@ -1,0 +1,70 @@
+Feature:
+	Als een admin,
+	Wil ik wijzigingen in de back-end direct zien in de front-end
+	Zodat mijn klanten altijd de recenste data te zien krijgen
+	
+Scenario Outline:
+	Gegeven 
+	Wanneer
+	Dan
+	
+Examples:
+	--> paar minuten
+	
+------------------------------------------------------------------------------
+	
+Feature:
+	Als een admin,
+	Wil ik de general settings kunnen aanpassen en zien in de front-end
+	Zodat mijn klanten altijd de recenste data te zien krijgen
+	
+Scenario Outline:
+	Gegeven
+	Wanneer
+	Dan
+	
+Examples:
+
+------------------------------------------------------------------------------
+
+Feature:
+	Als een admin,
+	Wil ik de account settings kunnen aanpassen en zien in de front-end
+	Zodat mijn klanten altijd de recenste data te zien krijgen
+	
+Scenario Outline:
+	Gegeven
+	Wanneer
+	Dan
+	
+Examples:
+
+------------------------------------------------------------------------------
+
+Feature:
+	Als een admin,
+	Wil ik de hotel settings kunnen aanpassen en zien in de front-end
+	Zodat mijn klanten altijd de recenste data te zien krijgen 
+	
+Scenario Outline:
+	Gegeven
+	Wanneer
+	Dan
+	
+Examples:
+
+------------------------------------------------------------------------------
+
+Feature:
+	Als een admin
+	Wil ik over de pagina kunnen navigeren
+	Zodat ik alle schermen kan zien
+	
+Scenario Outline:
+	Gegeven
+	Wanneer
+	Dan
+	
+Examples:
+
+------------------------------------------------------------------------------
