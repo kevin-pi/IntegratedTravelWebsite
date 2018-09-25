@@ -1,3 +1,2 @@
-# testcasus_bartosz
+# IntegratedTravelWebsite
 
-Dit is de respository van de case 
