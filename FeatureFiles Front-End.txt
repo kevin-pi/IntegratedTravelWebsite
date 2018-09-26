@@ -1,0 +1,155 @@
+Feature:
+				Als een reisbureau,
+                Wil ik betalingen kunnen ontvangen
+                Zodat ik mijn rekeningen kan betalen
+                
+Scenario Outline:
+                Gegeven ik zit in de betalingsmodule 
+                En ik kies voor <Betaalmethode>
+                Wanneer ik deze selecteer
+                Dan wil ik zien <Resultaat>
+                
+Examples:  
+| Methode | Resultaat|
+| Paypal | Paypal checkout button wordt getoond die doorlinkt naar Paypal sandbox |
+| Bank transfer | bankgegevens van PHPtravels worden getoond |
+| Creditcard | creditcard-specifieke velden worden getoond|
+
+	
+------------------------------------------------------------------------------
+	
+Feature: 
+	Als een klant,
+	Wil ik een hotel kunnen boeken,
+	Zodat ik op vakantie kan.
+
+Scenario Outline:
+	Gegeven ik invoer <HotelOrCityName>
+	En het hotel is in de database <aanwezigheid>
+	En het hotel heeft in de database <status>
+	En ik wil aankomen op <CheckIn>
+	En ik wil vertrekken op <CheckOut>
+	En mijn reisgezelschap is <#Volwassenen> en <#Kinderen>	
+	Wanneer ik op zoeken druk
+	Dan zie ik als resultaat: <Resultaat>
+	
+Examples:
+	| HotelOrCityName | Aanwezig | Status | CheckIn | CheckOut | #Volwassenen | #Kinderen | Resultaat |
+	| Rendezvous hotel | Ja | Enabled | 12-10-2018 | 15-10-2018 | 1 | 0 | Als het hotel beschikbaar is, wordt deze getoond. Als het hotel niet beschikbaar is, wordt de melding getoond: "Geen hotels die aan de zoekcriteria voldoen" | 
+	| London | Enabled | 30-09-2018 | 07-10-2018 | 2 | 2 | Alle beschikbare hotels in Londen voor die periode worden getoond | 
+	| Het leuke kleine hotel | Nee | Enabled | 12-10-2018 | 15-10-2018 | 1 | 0 | Het hotel moet niet te vinden zijn |
+ 	| Rendezvous hotel | Ja | Disabled | 12-10-2018 | 15-10-2018 | 1 | 0 | Het hotel moet niet te vinden zijn |
+	| Rendezvous hotel | Ja | Enabled | 25-09-2018 | 15-10-2018 | 1 | 0 | Foutmelding op checkin datum tonen |
+	| Rendezvous hotel | Ja | Enabled | 31-09-2018 | 15-10-2018 | 1 | 0 | Foutmelding op checkin datum tonen |
+	| Rendezvous hotel | Ja | Enabled | 16-10-2018 | 15-10-2018 | 1 | 0 | Foutmelding op checkout datum tonen |
+	| Rendezvous hotel | Ja | Enabled | 12-10-2018 | 15-10-2018 | 0 | 0 | Foutmelding op geen reisgezelschap |
+	| Rendezvous hotel | Ja | Enabled | 12-10-2018 | 15-10-2018 | 1 | 2 | Als het hotel beschikbaar is, wordt deze getoond. Als het hotel niet beschikbaar is, wordt de melding getoond: "Geen hotels die aan de zoekcriteria voldoen" |  
+	| Rendezvous hotel | Ja | Enabled | 12-10-2018 | 15-10-2018 | 2 | 0 | Als het hotel beschikbaar is, wordt deze getoond. Als het hotel niet beschikbaar is, wordt de melding getoond: "Geen hotels die aan de zoekcriteria voldoen" | 
+	| Rendezvous hotel | Nee | Disabled | 25-09-2018 | 24-09-2018 | 0 | 1 | Het hotel moet niet te vinden zijn |
+	| Rendezvous hotel | Ja | Enabled | 12-10-2018 | 15-10-2018 | 0 | 2 | Als het hotel beschikbaar is, wordt deze getoond. Als het hotel niet beschikbaar is, wordt de melding getoond: "Geen hotels die aan de zoekcriteria voldoen" | 
+	| [leeg] | [leeg] | [leeg] | [leeg] | [leeg] | 2 | 0 | Alle beschikbare hotels worden getoond |
+
+------------------------------------------------------------------------------
+	
+Feature: 
+	Als een klant,
+	Wil ik een tour kunnen boeken,
+	Zodat ik op vakantie kan.
+
+Scenario Outline:
+	Gegeven ik invoer <ListingOrCityName>
+	En de tour is in de database <aanwezigheid>
+	En de tour heeft in de database <status>
+	En ik wil vertrekken op <CheckIn>
+	En mijn reisgezelschap is <#Guests>	
+	En mijn gewenste type tour is <TypTour>
+	Wanneer ik op zoeken druk
+	Dan zie ik als resultaat: <Resultaat>
+	
+Examples:
+	| ListingOrCityName | Aanwezigheid | Status | CheckIn | #Guests | TypTour | Resultaat |
+	| Honk Kong Island Tour | Ja | Enabled | 15-10-2018 | 1 | Corporate | Als de tour beschikbaar is, wordt deze getoond. Als de tour niet beschikbaar is, wordt de melding getoond: "Geen tours die aan de zoekcriteria voldoen" |
+	| Rondje Veenendaal | Nee | Enabled | 15-10-2018 | 1 | Corporate| Tour wordt niet gevonden |
+	| Honk Kong Island Tour | Ja | Disabled | 15-10-2018 | 1 | Corporate| Tour wordt niet gevonden |
+	| Honk Kong Island Tour | Ja | Enabled | 01-09-2018 | 1 | Corporate| Foutmelding op checkin datum tonen|
+	| Honk Kong Island Tour | Ja | Enabled | 15-10-2018 | 0 | Corporate| Foutmelding op reisgezelschap |
+	| Honk Kong Island Tour | Ja | Enabled | 15-10-2018 | 1 | Anders | Tour wordt niet gevonden |
+	| Hong Kong Island Tour | Nee | Disables | 01-09-2018 | 0 | Anders | Tour wordt niet gevonden |
+	| Honk Kong Island Tour | Ja | Enabled | 31-09-2018 | 1 | Corporate| Foutmelding op checkin datum tonen|
+	| [leeg] | [leeg] | [leeg] | morgen | 2 | [leeg] | Als de tour beschikbaar is, wordt deze getoond. Als de tour niet beschikbaar is, wordt de melding getoond: "Geen tours die aan de zoekcriteria voldoen" |
+
+Aanvullende testcase:
+De typtour filtering moet goed werken. Dit is afhankelijk van wat er aan de back-end ingesteld is. 
+Tevens alle opties die er in de backend zijn, moeten in de front end aanwezig zijn.
+	
+------------------------------------------------------------------------------
+
+Feature: 
+	Als een klant,
+	Wil ik mij kunnen registeren
+	Zodat ik een account heb op de website.
+
+Scenario Outline:
+	Gegeven ik invoer <FirstName>
+	En ik invoer <LastName>
+	En ik invoer <MobileNumber>
+	En ik invoer <Email>
+	En ik invoer <Password>
+	En ik invoer <ConfirmPassword>
+	Wanneer ik op Sign Up druk
+	Dan zie ik als resultaat: <Resultaat>
+	
+Examples:
+	| FirstName | LastName | MobileNumber | Email | Password | ConfirmPassword | Resultaat |
+	| Jan | Klaassen | 061234567890 | jan@klaassen.com | Password01 | Password01 | Account is aangemaakt |
+	| [leeg] | Klaassen | 061234567890 | jan@klaassen.com | Password01 | Password01 | Foutmelding op lege FirstName |
+	| Jan | [leeg]| 061234567890 | jan@klaassen.com | Password01 | Password01 | Foutmelding op lege LastName |	
+	| Jan | Klaassen | [leeg]| jan@klaassen.com | Password01 | Password01 | Account is aangemaakt |
+	| Jan | Klaassen | 061234567890 | [leeg] | Password01 | Password01 | Foutmelding op leeg email adres |
+	| Jan | Klaassen | 061234567890 | geen$email | Password01 | Password01 | Foutmelding op ongeldig email adres |
+	| Jan | Klaassen | 061234567890 | jan@klaassen.com | [leeg] | Password01 | Foutmelding op leeg password |
+	| Jan | Klaassen | 061234567890 | jan@klaassen.com | Password01 | [leeg] | Foutmelding op leeg password |
+	| [leeg]| [leeg] | [leeg] | geenemail | [leeg] | [leeg] | Foutmelding wegens ontbrekende gegevens |
+	| Jan | Klaassen | 061234567890 | jan@klaassen.com | Password01 | AnotherPassword01 | Foutmelding op niet gelijke passwords |
+	
+------------------------------------------------------------------------------
+
+Feature: 
+	Als een klant,
+	Wil ik mijn account kunnen inzien
+	Zodat ik daar kan controleren of mijn gegevens kloppen
+
+Scenario Outline:
+	Gegeven ik ben ingelogd op de website als <inlog>
+	Wanneer ik op Account klik
+	Dan zie ik als resultaat: <Resultaat>
+	
+Examples:
+	| Inlog | Resultaat |
+	| user@phptravels.com | Accountpagina wordt getoond |
+	| niet ingelogd | Account is niet zichtbaar. Zichtbaar zijn: Login en Sign Up |
+	
+------------------------------------------------------------------------------
+
+Feature: 
+	Als een klant,
+	Wil ik kunnen inloggen
+	Zodat ik als geregistreerde klant kan boeken
+
+Scenario Outline:
+	Gegeven ik ben niet ingelogd op de website
+	En ik druk op log in 
+	En ik voer in <Email>
+	En ik voer in <Password>
+	Wanneer ik op Login klik
+	Dan zie ik als resultaat: <Resultaat>
+	
+Examples:
+	| Email | Password | Resultaat |
+	| user@phptravels.com | demouser | Succesvolle inlog |
+	| [leeg] | demouser | Foutmelding op ontbrekende email |
+	| user@phptravels.com | [leeg] | Foutmelding op ontbrekend password |
+	| user@phptravels.com | wrong pasword | Foutmelding gebruikersnaam en wachtwoord combinatie niet bekend |
+	
+------------------------------------------------------------------------------
+
