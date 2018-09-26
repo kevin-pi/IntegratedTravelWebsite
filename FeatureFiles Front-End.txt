@@ -36,7 +36,7 @@ Scenario Outline:
 Examples:
 	| HotelOrCityName | Aanwezig | Status | CheckIn | CheckOut | #Volwassenen | #Kinderen | Resultaat |
 	| Rendezvous hotel | Ja | Enabled | 12-10-2018 | 15-10-2018 | 1 | 0 | Als het hotel beschikbaar is, wordt deze getoond. Als het hotel niet beschikbaar is, wordt de melding getoond: "Geen hotels die aan de zoekcriteria voldoen" | 
-	| London | Enabled | 30-09-2018 | 07-10-2018 | 2 | 2 | Alle beschikbare hotels in Londen voor die periode worden getoond | 
+	| London | Ja | Enabled | 30-09-2018 | 07-10-2018 | 2 | 2 | Alle beschikbare hotels in Londen voor die periode worden getoond | 
 	| Het leuke kleine hotel | Nee | Enabled | 12-10-2018 | 15-10-2018 | 1 | 0 | Het hotel moet niet te vinden zijn |
  	| Rendezvous hotel | Ja | Disabled | 12-10-2018 | 15-10-2018 | 1 | 0 | Het hotel moet niet te vinden zijn |
 	| Rendezvous hotel | Ja | Enabled | 25-09-2018 | 15-10-2018 | 1 | 0 | Foutmelding op checkin datum tonen |
