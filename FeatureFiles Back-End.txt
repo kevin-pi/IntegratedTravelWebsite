@@ -4,16 +4,16 @@ Feature:
 	Zodat mijn klanten altijd de recenste data te zien krijgen
 	
 Scenario Outline:
-	Gegeven 
-	Wanneer
-	Dan
+	Gegeven ik maak een wijziging in de back-end aan
+	Wanneer ik deze wijziging opsla
+	Dan zie ik deze binnen een paar minuten doorgevoerd op de front-end
 	
 Examples:
-	--> paar minuten
+Performance user story.
 	
 ------------------------------------------------------------------------------
 	
-Feature:
+Feature: 
 	Als een admin,
 	Wil ik de general settings kunnen aanpassen en zien in de front-end
 	Zodat mijn klanten altijd de recenste data te zien krijgen
@@ -24,12 +24,13 @@ Scenario Outline:
 	Dan
 	
 Examples:
+Currency en sliders - CRUD getest en zien op front-end
 
 ------------------------------------------------------------------------------
 
 Feature:
 	Als een admin,
-	Wil ik de account settings kunnen aanpassen en zien in de front-end
+	Wil ik de account settings (admins) kunnen aanpassen en zien in de front-end
 	Zodat mijn klanten altijd de recenste data te zien krijgen
 	
 Scenario Outline:
@@ -38,6 +39,7 @@ Scenario Outline:
 	Dan
 	
 Examples:
+Admins en customers - CRUD getest en te zien op front-end.
 
 ------------------------------------------------------------------------------
 
@@ -52,6 +54,7 @@ Scenario Outline:
 	Dan
 	
 Examples:
+hotel + rooms - CRUD getest en te zien op front-end met filtering
 
 ------------------------------------------------------------------------------
 
@@ -66,5 +69,5 @@ Scenario Outline:
 	Dan
 	
 Examples:
-
+Exploratory testing
 ------------------------------------------------------------------------------
